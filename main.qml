@@ -9,6 +9,12 @@ ApplicationWindow {
     visible: true
     title: qsTr("Controle MIDI")
     property string textoBotao
+    property int valorSlider16: 100
+    property int valorSlider17: 100
+    property int valorSlider18: 100
+    property int valorSlider19: 100
+
+
 
     Rectangle {
         border.color: "black"
@@ -54,17 +60,46 @@ ApplicationWindow {
             RowLayout {
                 Layout.maximumHeight: 170
 
-                    Repeater {
-                        model: 4
+                    Slider {
+                        from: 0
+                        to: 127
+                        value: valorSlider16
+                        orientation: Qt.Vertical
 
-                        Slider {
-                            value: Math.random()
-                            orientation: Qt.Vertical
-
-                            Layout.fillWidth: true
-                            Layout.fillHeight: true
-                        }
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
                     }
+
+                    Slider {
+                        from: 0
+                        to: 127
+                        value: valorSlider17
+                        orientation: Qt.Vertical
+
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                    }
+
+                    Slider {
+                        from: 0
+                        to: 127
+                        value: valorSlider18
+                        orientation: Qt.Vertical
+
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                    }
+
+                    Slider {
+                        from: 0
+                        to: 127
+                        value: valorSlider19
+                        orientation: Qt.Vertical
+
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                    }
+
             }
         }
     }

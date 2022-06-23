@@ -5,7 +5,7 @@ import sys
 
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QObject, Signal
 
 from rtmidi.midiutil import open_midiinput
 
@@ -21,7 +21,12 @@ except (EOFError, KeyboardInterrupt):
 class EventoMidiIn(object):
 
     def gira_knob(self, mensagem):
-        print("gira %s" % mensagem)
+        _, controle, valor = mensagem
+        if controle >= 16 and controle <=19:
+            engine.rootObjects()[0].setProperty("valorSlider%d" % controle, valor)
+        else:
+            print("gira %s" % mensagem)
+
 
     def pressiona_tecla(self, mensagem):
         print("aperta %s" % mensagem)
@@ -45,8 +50,14 @@ class EventoMidiIn(object):
             metodo = self.mapa_comando_metodo[comando]
             metodo(self, mensagem)
 
+
+class EventosQt(QObject):
+
+    def __init__(self):
+        super().__init__()
+
 def atualizar():
-    engine.rootObjects()[0].setProperty("textoBotao", "BB")
+    engine.rootObjects()[0].setProperty("textoBotao", "")
 
 if __name__ == "__main__":
     # print(arquivo_qml)
