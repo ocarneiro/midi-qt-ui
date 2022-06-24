@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.0
 
 ApplicationWindow {
+    objectName: "appWindow"
     width: 640
     height: 480
     visible: true
@@ -17,91 +18,95 @@ ApplicationWindow {
 
 
     Rectangle {
+        objectName: "retângulo"
         border.color: "black"
         width: 560
         height: 300
         anchors.centerIn: parent
         // anchors.verticalCenter: parent - 200
     
-    RowLayout {
-        spacing: 115
-        anchors.fill: parent
-        anchors.margins: 50
+        RowLayout {
+            objectName: "linhas"
+            spacing: 115
+            anchors.fill: parent
+            anchors.margins: 50
 
-        ColumnLayout { // coluna dos botões
-            spacing: 6
-            Layout.preferredWidth: 150
+            ColumnLayout { // coluna dos botões
+                objectName: "colunasBotoes"
+                spacing: 6
+                Layout.preferredWidth: 150
 
-            Repeater {
-                model: 3            
-            
-                RowLayout {
+                Repeater {
+                    objectName: "repetidorColunas"
+                    model: 3            
+                
+                    RowLayout {
+                        objectName: "linhasBotoes"
 
-                    Repeater {
-                        model: 4
+                        Repeater {
+                            objectName: "repetidorLinhas"
+                            model: 4
 
-                        Button {
-                            icon.name: "folder"
-                            text: textoBotao
-                            Layout.preferredWidth: 60
-                            Layout.preferredHeight: 60
+                            Button {
+                                Layout.preferredWidth: 60
+                                Layout.preferredHeight: 60
+                            }
                         }
                     }
+
                 }
 
             }
 
-        }
+            ColumnLayout {  // coluna dos sliders
+                spacing: 0
+                Layout.preferredWidth: 230
 
-        ColumnLayout {  // coluna dos sliders
-            spacing: 0
-            Layout.preferredWidth: 230
+                RowLayout {
+                    Layout.maximumHeight: 170
 
-            RowLayout {
-                Layout.maximumHeight: 170
+                        Slider {
+                            from: 0
+                            to: 127
+                            value: valorSlider16
+                            orientation: Qt.Vertical
 
-                    Slider {
-                        from: 0
-                        to: 127
-                        value: valorSlider16
-                        orientation: Qt.Vertical
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                        }
 
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                    }
+                        Slider {
+                            from: 0
+                            to: 127
+                            value: valorSlider17
+                            orientation: Qt.Vertical
 
-                    Slider {
-                        from: 0
-                        to: 127
-                        value: valorSlider17
-                        orientation: Qt.Vertical
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                        }
 
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                    }
+                        Slider {
+                            from: 0
+                            to: 127
+                            value: valorSlider18
+                            orientation: Qt.Vertical
 
-                    Slider {
-                        from: 0
-                        to: 127
-                        value: valorSlider18
-                        orientation: Qt.Vertical
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                        }
 
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                    }
+                        Slider {
+                            from: 0
+                            to: 127
+                            value: valorSlider19
+                            orientation: Qt.Vertical
 
-                    Slider {
-                        from: 0
-                        to: 127
-                        value: valorSlider19
-                        orientation: Qt.Vertical
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                        }
 
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                    }
-
+                }
             }
         }
-    }
     }  // Rectangle
 } // ApplicationWindow

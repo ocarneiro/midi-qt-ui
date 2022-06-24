@@ -5,7 +5,7 @@ import sys
 
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
-from PySide6.QtCore import QTimer, QObject, Signal
+from PySide6.QtCore import QObject
 
 from rtmidi.midiutil import open_midiinput
 
@@ -56,9 +56,6 @@ class EventosQt(QObject):
     def __init__(self):
         super().__init__()
 
-def atualizar():
-    engine.rootObjects()[0].setProperty("textoBotao", "")
-
 if __name__ == "__main__":
     # print(arquivo_qml)
     engine.load(arquivo_qml)
@@ -67,10 +64,4 @@ if __name__ == "__main__":
 
     midiin.set_callback(EventoMidiIn(port_name))
 
-    timer = QTimer()
-    timer.setInterval(2000)  # msecs 100 = 1/10th sec
-    timer.timeout.connect(atualizar)
-    timer.start()
-
-    engine.rootObjects()[0].setProperty("textoBotao", "AA")
     sys.exit(app.exec())
