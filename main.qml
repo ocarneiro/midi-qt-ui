@@ -15,8 +15,22 @@ ApplicationWindow {
     property int valorSlider18: 100
     property int valorSlider19: 100
 
+    property bool botao12: false
+    property bool botao11: false
+    property bool botao10: false
+    property bool botao9: false
+    property bool botao8: false
+    property bool botao7: false
+    property bool botao6: false
+    property bool botao5: false
+    property bool botao4: false
+    property bool botao3: false
+    property bool botao2: false
+    property bool botao1: false
 
+    property QtObject backend
 
+    
     Rectangle {
         objectName: "retângulo"
         border.color: "black"
@@ -35,25 +49,125 @@ ApplicationWindow {
                 objectName: "colunasBotoes"
                 spacing: 6
                 Layout.preferredWidth: 150
-
-                Repeater {
-                    objectName: "repetidorColunas"
-                    model: 3            
                 
-                    RowLayout {
-                        objectName: "linhasBotoes"
+                RowLayout {
+                    objectName: "linhaBotoes1"
 
-                        Repeater {
-                            objectName: "repetidorLinhas"
-                            model: 4
-
-                            Button {
-                                Layout.preferredWidth: 60
-                                Layout.preferredHeight: 60
-                            }
+                    Button {
+                        background: Rectangle {
+                            color: botao12 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
                         }
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
                     }
 
+                    Button {
+                        background: Rectangle {
+                            color: botao9 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                        
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao6 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }   
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao3 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                           
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+                }
+
+                RowLayout {
+                    objectName: "linhaBotoes2"
+
+                    Button {
+                        background: Rectangle {
+                            color: botao11 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                          
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao8 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                          
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao5 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                          
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao2 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                          
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+                }
+
+                RowLayout {
+                    objectName: "linhaBotoes3"
+
+                    Button {
+                        background: Rectangle {
+                            color: botao10 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                             
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao7 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                             
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao4 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                             
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
+
+                    Button {
+                        background: Rectangle {
+                            color: botao1 ? "steelblue" : "lightsteelblue"
+                            border.color: "gray"
+                        }                             
+                        Layout.preferredWidth: 60
+                        Layout.preferredHeight: 60
+                    }
                 }
 
             }

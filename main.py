@@ -6,12 +6,14 @@ import sys
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtCore import QObject
+from PySide6.QtCore import Qt  # FindChildOption,FindChildOptions,FindChildrenRecursively,FindDirectChildrenOnly
 
 from rtmidi.midiutil import open_midiinput
 
 app = QGuiApplication(sys.argv)
 engine = QQmlApplicationEngine()
 arquivo_qml = os.fspath(Path(__file__).resolve().parent / "main.qml")
+
 
 try:
     midiin, port_name = open_midiinput(0)
@@ -29,10 +31,12 @@ class EventoMidiIn(object):
 
 
     def pressiona_tecla(self, mensagem):
-        print("aperta %s" % mensagem)
+        _, botao, _ = mensagem
+        engine.rootObjects()[0].setProperty("botao%d"%botao, True)
 
     def solta_tecla(self, mensagem):
-        print("solta %s" % mensagem)
+        _, botao, _ = mensagem
+        engine.rootObjects()[0].setProperty("botao%d"%botao, False)
 
     mapa_comando_metodo = {
         176: gira_knob,
@@ -50,11 +54,6 @@ class EventoMidiIn(object):
             metodo = self.mapa_comando_metodo[comando]
             metodo(self, mensagem)
 
-
-class EventosQt(QObject):
-
-    def __init__(self):
-        super().__init__()
 
 if __name__ == "__main__":
     # print(arquivo_qml)
