@@ -3,10 +3,10 @@ import os
 from pathlib import Path
 import sys
 
-from PySide6.QtGui import QGuiApplication
-from PySide6.QtQml import QQmlApplicationEngine
-from PySide6.QtCore import QObject
-from PySide6.QtCore import Qt  # FindChildOption,FindChildOptions,FindChildrenRecursively,FindDirectChildrenOnly
+from PyQt6.QtGui import QGuiApplication
+from PyQt6.QtQml import QQmlApplicationEngine
+# from PySide6.QtCore import QObject
+# from PySide6.QtCore import Qt  # FindChildOption,FindChildOptions,FindChildrenRecursively,FindDirectChildrenOnly
 
 import rtmidi
 from rtmidi.midiutil import open_midiinput
@@ -30,6 +30,7 @@ class EventoMidiIn(object):
     def gira_knob(self, mensagem):
         _, controle, valor = mensagem
         if controle >= 16 and controle <=19:
+            pass
             engine.rootObjects()[0].setProperty("valorSlider%d" % controle, valor)
         else:
             print("turning %s" % mensagem)
@@ -61,7 +62,7 @@ class EventoMidiIn(object):
 
 
 if __name__ == "__main__":
-    # print(arquivo_qml)
+    print(arquivo_qml)
     engine.load(arquivo_qml)
     if not engine.rootObjects():
         sys.exit(-1)
